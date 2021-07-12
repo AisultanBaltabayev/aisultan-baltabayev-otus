@@ -1,14 +1,15 @@
-let result = 0;
-export const Sum = (num) => {
-    if (!num) {
-        return result
+const Sum = (num) => {
+    const isNumber = (arg) => (arg && typeof arg === "number") || arg === 0;
+
+    const addRecursiveOrResult = (num2) => {
+        if (isNumber(num2)) {
+            return Sum(num + num2);
+        } else {
+            return num;
+        }
+    };
+
+    if (isNumber(num)) {
+        return addRecursiveOrResult;
     }
-    // добавил проверку на число, так как в задаче
-    // было описано именно про сумму и так как
-    // должен возвращать результат только при undefined,
-    // но не говорится, что делать с другими кейсами
-    if (typeof num === 'number') {
-        result += num
-    }
-    return Sum
-}
+};
